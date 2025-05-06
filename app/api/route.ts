@@ -17,9 +17,9 @@ export const POST = async (req: NextRequest) => {
   });
 };
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   const users = await prisma?.user.findMany();
-  if (users.length > 0) {
+  if (users && users.length > 0) {
     return new Response(JSON.stringify(users), {
       status: 200,
       headers: {
